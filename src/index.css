@@ -44,3 +44,9 @@ h1, h2, h3 { font-family: 'Inter Tight', Archivo, sans-serif; font-weight: 900; 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
+
+/* Faixa de cobogó do menu: quadrados vazados em papel que surgem em stagger */
+.cobogo-quadrado { position: relative; display: block; width: 14px; height: 14px; flex: none; }
+.cobogo-quadrado::before { content: ''; position: absolute; inset: 3px; background: var(--papel); transform: scale(0); animation: cobogo-acende 90ms ease-out both; animation-delay: inherit; }
+@keyframes cobogo-acende { from { transform: scale(0); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .cobogo-quadrado::before { animation: none; transform: scale(1); } }
