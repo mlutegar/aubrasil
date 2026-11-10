@@ -5,11 +5,12 @@ import { copyFileSync, readdirSync, readFileSync } from 'node:fs'
 
 const IMG = 'public/img/'
 const LARGURAS = [400, 640]
+const EXTRAS = { 'home-bloco-a': [708] } // largura original (708px): servida em telas 2x sem ampliar
 
 // 1) WebP em múltiplos tamanhos (nunca amplia além do original)
 for (const f of readdirSync(IMG).filter(f => /\.jpe?g$/i.test(f))) {
   const nome = f.replace(/\.jpe?g$/i, '')
-  const ws = LARGURAS // arquivo -640 pode ter menos px se o original for menor (sem ampliar)
+  const ws = [...LARGURAS, ...(EXTRAS[nome] ?? [])] // arquivo -640 pode ter menos px se o original for menor (sem ampliar)
   for (const w of ws) await sharp(IMG + f).resize({ width: w, withoutEnlargement: true }).webp({ quality: 78 }).toFile(`${IMG}${nome}-${w}.webp`)
   console.log(nome, ws.join(','))
 }
