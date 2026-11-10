@@ -1,0 +1,35 @@
+{
+  "name": "pedregulho",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host",
+    "imagens": "node scripts/imagens.mjs",
+    "qrcode": "node scripts/gerar-qrcode.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^14.12.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "react-zoom-pan-pinch": "^4.2.0"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "autoprefixer": "^10.6.2",
+    "opentype.js": "^2.0.0",
+    "postcss": "^8.5.32",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.7"
+  }
+}

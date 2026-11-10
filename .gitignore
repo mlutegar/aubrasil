@@ -1,0 +1,12 @@
+node_modules
+dist
+*.tsbuildinfo
+.env
+.env.local
+*.env
+!.env.example
+*.log
+.vscode/
+.idea/
+qrcode.svg
+qrcode.png
