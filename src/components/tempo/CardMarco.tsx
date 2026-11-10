@@ -121,7 +121,7 @@ function Card({ indice: i, onFechar, onIr, retorno }: Props & { indice: number }
           <div className="mt-4 h-[6px] w-12 bg-vermelho" />
           <figure className="m-0 mt-5">
             <img src={base + ev.foto} alt={`${ev.titulo}, ${ev.ano}`} draggable={false} className="aspect-[4/3] w-full bg-concreto object-cover" />
-            <figcaption className="mt-2 text-xs italic text-cinza">{ev.resumo}. {textos.credito}: {ev.credito}</figcaption>
+            <figcaption className="mt-2 text-xs italic text-cinza">{ev.legenda ?? ev.resumo}. {textos.credito}: {ev.credito}</figcaption>
           </figure>
           <p className="mt-5 text-[15px] leading-relaxed">{ev.texto}</p>
         </motion.div>

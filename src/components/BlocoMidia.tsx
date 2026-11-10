@@ -10,7 +10,7 @@ const diagramas = { fluxos: DiagramaFluxos, corte: DiagramaCorte, transformacoes
 
 export default function BlocoMidia({ m }: { m: Midia }) {
   if (m.tipo === 'imagem') {
-    const isDiagrama = m.foto.endsWith('.png') && m.credito === 'Produção do grupo'
+    const isDiagrama = m.foto.endsWith('.png')
     return (
       <Reveal className="-mx-4 my-8">
         <figure>

@@ -1,5 +1,5 @@
 export type Credito = string
-export interface Imagem { foto: string; credito: Credito }
+export interface Imagem { foto: string; credito: Credito; legenda?: string }
 
 export const ficha = {
   nome: 'Conjunto Residencial Prefeito Mendes de Moraes (Pedregulho)',
@@ -43,7 +43,10 @@ const HOME_CREDITO = '[CONFIRMAR CRÉDITO]'
 export const edificios: Edificio[] = [
   { id: 'bloco-a', nome: 'Bloco A', tipo: 'residencial', original: 'Moradia', transformacao: 'Degradação após 1964', hoje: 'Restaurado 2010-2015', status: 'mantem', descricao: "Edifício curvo de 272 apartamentos em sete pavimentos, que acompanha a curva de nível do morro. A entrada é pelo 3º pavimento, por duas passarelas, onde ficavam a creche, a administração e pequenos comércios. Só foi ocupado no início dos anos 1960 e foi restaurado entre 2010 e 2015.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
   { id: 'blocos-b', nome: 'Blocos B1 e B2', tipo: 'residencial', original: 'Moradia duplex', transformacao: 'Cercados', hoje: 'Moradia', status: 'mantem', descricao: "Dois blocos menores de apartamentos duplex, inaugurados em 1950 na primeira etapa do conjunto. Junto com a escola e o posto de saúde, conformam a praça central. Seguem como moradia, mas hoje estão cercados.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
-  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", foto: 'img/escola.svg', credito: '' },
+  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", foto: 'img/escola.svg', credito: '',
+    fotoOriginal: { foto: 'img/escola-historica.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Escola do conjunto, foto histórica' },
+    fotoTransformacao: { foto: 'img/ginasio-historico.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Ginásio do conjunto, foto histórica' },
+    fotoHoje: { foto: 'img/ginasio-painel-hoje.jpg', credito: 'Márcia Foletto / O Globo', legenda: 'Ginásio e painel de azulejos, com o Bloco A ao fundo' } },
   { id: 'posto', nome: 'Posto de saúde', tipo: 'coletivo', original: 'Atendimento local', transformacao: 'Vira hospital em 1953', hoje: 'Fechado em 1999, em ruína', status: 'ruina', descricao: "O posto de saúde atendia os moradores como extensão da habitação. Virou hospital em 1953, foi fechado em 1999 e hoje está em ruína.", foto: 'img/posto.svg', credito: '' },
   { id: 'lavanderia', nome: 'Lavanderia', tipo: 'coletivo', original: 'Lavanderia coletiva', transformacao: 'Funciona até meados dos anos 1970', hoje: 'Depósito da Fundação Leão XIII', status: 'mudou', descricao: "Concentrava a lavagem de roupa, retirada dos apartamentos para aliviar o trabalho das moradoras. Ficava longe do Bloco A, enfrentou resistência e funcionou só até meados dos anos 1970. Hoje é depósito da Fundação Leão XIII.", foto: 'img/lavanderia.svg', credito: '' },
   { id: 'mercado', nome: 'Mercado', tipo: 'coletivo', original: 'Mercado', transformacao: 'Comércio até 1980', hoje: 'Garagem da Fundação Leão XIII', status: 'mudou', descricao: "Fazia parte da ideia de um conjunto autossuficiente, com os serviços ao alcance dos moradores. Funcionou como comércio até 1980 e hoje é garagem da Fundação Leão XIII.", foto: 'img/mercado.svg', credito: '' },
@@ -58,7 +61,7 @@ export interface Evento extends Imagem {
 export const linhaDoTempo: Evento[] = [
   { ano: 1946, tipo: 'construcao', titulo: 'Criação do DHP', resumo: 'Reidy elabora o primeiro projeto', texto: 'A Prefeitura do Distrito Federal cria o Departamento de Habitação Popular. Sob Carmen Portinho, a partir de 1948, o DHP passa a tratar a moradia como serviço público ligado a saúde, educação e assistência social.', foto: 'img/tl-1946.svg', credito: '' },
   { ano: 1950, tipo: 'construcao', titulo: 'Primeira etapa inaugurada', resumo: 'Blocos B1 e B2, escola, posto e piscina', texto: 'Inauguram-se os blocos B1 e B2, a escola, o posto de saúde, a lavanderia e a piscina. O Bloco A seguiria em obras durante toda a década.', foto: 'img/tl-1950.svg', credito: '' },
-  { ano: 1960, tipo: 'ruptura', titulo: 'Capital vai para Brasília', resumo: 'Prioridade passa à reurbanização de favelas', texto: 'Com a transferência da capital, o Rio deixa de ser Distrito Federal e a política habitacional muda de foco. O Bloco A só é ocupado no início dos anos 1960.', foto: 'img/tl-1960.svg', credito: '' },
+  { ano: 1960, tipo: 'ruptura', titulo: 'Capital vai para Brasília', resumo: 'Prioridade passa à reurbanização de favelas', texto: 'Com a transferência da capital, o Rio deixa de ser Distrito Federal e a política habitacional muda de foco. O Bloco A só é ocupado no início dos anos 1960.', foto: 'img/conjunto-historico.jpg', credito: 'EAD/PUCV', legenda: 'Vista do conjunto com o Bloco A concluído' },
   { ano: 1962, tipo: 'ruptura', titulo: 'Extinção do DHP', resumo: 'Blocos à COHAB, serviços à Fundação Leão XIII', texto: 'O DHP é extinto. Moradia e equipamentos passam a órgãos diferentes e o conjunto perde a gestão única que o sustentava.', foto: 'img/tl-1962.svg', credito: '' },
   { ano: 1964, tipo: 'ruptura', titulo: 'Golpe militar', resumo: 'Investimentos interrompidos', texto: 'Os investimentos em habitação de interesse social são descontinuados. Sem manutenção, o conjunto entra em degradação.', foto: 'img/tl-1964.svg', credito: '' },
   { ano: 2015, tipo: 'construcao', titulo: 'Restauro do Bloco A concluído', resumo: 'Obras iniciadas em dezembro de 2010', texto: 'O restauro, planejado em 2004 pelo escritório de Alfredo Britto, é executado sem remover os cerca de dois mil moradores. Pioneiro para a habitação popular, provoca forte valorização.', foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
@@ -73,7 +76,7 @@ export const tempoTextos = {
   imagemFallback: 'img/bloco-a.svg',
   imagemAlt: 'Vista aérea do conjunto, c. anos 1960',
   imagemLegenda: 'Vista aérea do conjunto, c. anos 1960',
-  imagemCredito: '[CONFIRMAR CRÉDITO]',
+  imagemCredito: 'Nabil Bonduki',
   listaLabel: 'Marcos da linha do tempo',
   abrir: 'Abrir',
   legenda: { construcao: 'Marco de construção', ruptura: 'Ruptura institucional' },
@@ -165,7 +168,8 @@ const extras: Record<string, BlocoMidia[]> = {
   ],
   contexto: [
     { depois: 2, bloco: { tipo: 'imagem', foto: 'img/carmen-portinho.jpg', credito: 'IAB', legenda: 'Carmen Portinho', alt: 'Foto de Carmen Portinho' } },
-    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/exposicao-ny-1958.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Abertura da exposição sobre habitação popular em Nova York, em 1958', alt: 'Exposição em Nova York, 1958' } },
+    { depois: 5, bloco: { tipo: 'imagem', foto: 'img/portinho-reidy-costa.jpg', credito: 'Vitruvius', legenda: 'Carmen Portinho, Affonso Reidy e Lucio Costa', alt: 'Carmen Portinho, Affonso Reidy e Lucio Costa' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/exposicao-ny-1958.jpg', credito: 'Instituto Moreira Salles', legenda: 'Abertura da exposição sobre habitação popular em Nova York, em 1958', alt: 'Exposição em Nova York, 1958' } },
   ],
   territorio: [
     { depois: 1, bloco: { tipo: 'imagem', foto: 'img/implantacao.png', credito: 'Produção do grupo', legenda: 'Implantação: blocos residenciais em vermelho, equipamentos coletivos em azul', alt: 'Diagrama de implantação' } },
@@ -180,7 +184,8 @@ const extras: Record<string, BlocoMidia[]> = {
   materiais: [
     { depois: 1, bloco: { tipo: 'diagrama', id: 'corte', legenda: 'Corte esquemático do Bloco A, sem escala.' } },
     { depois: 1, bloco: { tipo: 'imagem', foto: 'img/pilotis-estrutura.png', credito: 'Produção do grupo', legenda: 'Estrutura em concreto armado sobre pilotis', alt: 'Estrutura dos pilotis' } },
-    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/cobogo-restauro.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Recuperação dos cobogós durante o restauro', alt: 'Cobogós sendo restaurados' } },
+    { depois: 1, bloco: { tipo: 'imagem', foto: 'img/ventilacao-planta.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Ventilação dos banheiros (azul) e das cozinhas (amarelo) no apartamento do Bloco A', alt: 'Planta do apartamento do Bloco A com a ventilação de banheiros e cozinhas' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/cobogo-restauro.jpg', credito: 'Guilherme Pinto', legenda: 'Pedregulho: quatro anos de reforma', alt: 'Cobogós sendo restaurados' } },
   ],
   sociedade: [
     { depois: 2, bloco: { tipo: 'citacao', texto: "O que foi pensado como emancipação acabou vivido como imposição." } },
@@ -190,6 +195,8 @@ const extras: Record<string, BlocoMidia[]> = {
     { depois: 3, bloco: { tipo: 'citacao', texto: "Concebido fora da lógica de mercado, o conjunto acabou reinserido nela de maneira informal." } },
   ],
   transformacoes: [
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/acessibilidade-plantas.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Obstáculos à acessibilidade nas plantas dos blocos A e B: os círculos de 1,50 m de diâmetro (área de giro de cadeira de rodas exigida pela NBR 9050) não cabem nos cômodos e circulações', alt: 'Plantas dos blocos A e B com círculos de giro de 1,50 m que não cabem nos cômodos' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/acessibilidade-escadas.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Corte: as escadas (em vermelho) são a única opção de deslocamento vertical nos blocos residenciais', alt: 'Corte dos blocos com as escadas em vermelho' } },
     { depois: 1, bloco: { tipo: 'diagrama', id: 'transformacoes', legenda: 'O que aconteceu com cada edifício.' } },
     { depois: 1, bloco: { tipo: 'antesHoje' } },
     { depois: 4, bloco: { tipo: 'citacao', texto: "Sem gestão e manutenção contínuas, a arquitetura permanece, mas a vida coletiva que ela previa se desfaz." } },
@@ -244,7 +251,14 @@ export const referencias = {
     'Produção do grupo: mapa-localizacao.png, implantacao.png, implantacao-pilotis.png, setorizacao-3d.png, plantas-setorizadas.png, pilotis-estrutura.png',
     'IAB: carmen-portinho.jpg',
     'Arte fora do Museu: aerea-hoje.jpg',
-    '[CONFIRMAR CRÉDITO]: home-bloco-a.jpg, exposicao-ny-1958.jpg, cobogo-restauro.jpg, grades-corredor.jpg, timeline-capa.jpg, aerea-antes.jpg',
+    'Alinne Zimmermann e Maria Eugênia: acessibilidade-plantas.png, acessibilidade-escadas.png, ventilacao-planta.png',
+    'Vitruvius: portinho-reidy-costa.jpg',
+    'Instituto Moreira Salles: exposicao-ny-1958.jpg',
+    'Guilherme Pinto: cobogo-restauro.jpg',
+    'Nabil Bonduki: timeline-capa.jpg, aerea-antes.jpg',
+    'Márcia Foletto / O Globo: ginasio-painel-hoje.jpg',
+    'EAD/PUCV: conjunto-historico.jpg',
+    '[CONFIRMAR CRÉDITO]: home-bloco-a.jpg, grades-corredor.jpg, escola-historica.jpg, ginasio-historico.jpg',
     'Imagem de compartilhamento (Open Graph): ilustração gerada com IA (ChatGPT), sob direção do grupo.',
   ],
 }
@@ -291,7 +305,7 @@ export const antesHoje = {
   /** Proporção do container. As duas fotos usam object-fit: cover nele. */
   proporcao: '16 / 9',
   // objectPosition: ajuste de enquadramento de cada foto (sintaxe CSS, ex.: '50% 40%') para alinhar o conjunto nas duas.
-  antes: { foto: 'img/aerea-antes.jpg', alt: 'Vista aérea do conjunto nos anos 1960', objectPosition: '50% 50%', legenda: 'Vista aérea do conjunto, c. anos 1960', credito: '[CONFIRMAR CRÉDITO]' },
+  antes: { foto: 'img/aerea-antes.jpg', alt: 'Vista aérea do conjunto nos anos 1960', objectPosition: '50% 50%', legenda: 'Vista aérea do conjunto, c. anos 1960', credito: 'Nabil Bonduki' },
   hoje: { foto: 'img/aerea-hoje.jpg', alt: 'Vista aérea atual do conjunto, com cercas, clube e posto em ruína', objectPosition: '50% 50%', legenda: 'Vista aérea atual', credito: 'Arte fora do Museu' },
   // Marcações vermelhas sobre a foto de hoje. Lista vazia = sem marcações. Posições provisórias: ajustar olhando a foto.
   marcacoes: [
@@ -311,7 +325,7 @@ export const home = {
   imagemFallback: 'img/bloco-a.svg',
   imagemAlt: 'Bloco A após o restauro',
   imagemLegenda: 'Bloco A após o restauro',
-  imagemCredito: '[CONFIRMAR CRÉDITO]',
+  imagemCredito: 'Nabil Bonduki',
   botaoMapa: 'Explorar o mapa →',
   botaoTempo: 'Linha do tempo',
   capitulosTitulo: 'Capítulos',
