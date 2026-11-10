@@ -1,4 +1,4 @@
-// Uso: npm run qrcode -- https://pedregulho.mrender.com.br
+// Uso: npm run qrcode -- https://pedregulho.mlutegar.com
 // Gera qrcode.svg (vetorial, azul-marinho, fundo transparente) e qrcode.png (2000x2000) com ?origem=prancha
 import QRCode from 'qrcode'
 import sharp from 'sharp'

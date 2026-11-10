@@ -6,7 +6,7 @@ import { secoes, textos } from '../data/content'
 export default function Header({ subtitulo }: { subtitulo: string }) {
   const [aberto, setAberto] = useState(false)
   const { pathname } = useLocation()
-  useEffect(() => setAberto(false), [pathname])
+  useEffect(() => { setAberto(false) }, [pathname])
 
   return (
     <>

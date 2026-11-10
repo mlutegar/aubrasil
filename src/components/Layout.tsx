@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './Header'
+import ErrorBoundary from './ErrorBoundary'
 import { capitulos, secoes } from '../data/content'
 
 export function subtituloDe(pathname: string): string {
@@ -11,11 +12,11 @@ export function subtituloDe(pathname: string): string {
 
 export default function Layout() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
   return (
     <div className="mx-auto min-h-screen max-w-coluna bg-papel sm:border-x sm:border-linha">
       <Header subtitulo={subtituloDe(pathname)} />
-      <main className="px-gutter pb-16 pt-24"><Outlet /></main>
+      <main className="px-gutter pb-16 pt-24"><ErrorBoundary key={pathname}><Outlet /></ErrorBoundary></main>
     </div>
   )
 }
