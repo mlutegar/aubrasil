@@ -39,15 +39,15 @@ export const statusInfo: Record<StatusEdificio, { rotulo: string; cor: string; t
   ruina: { rotulo: 'Em ruína', cor: '#D7261E', texto: '#FFFFFF' },
 }
 
-const C = '[CRÉDITO]'
+const HOME_CREDITO = '[CONFIRMAR CRÉDITO]'
 export const edificios: Edificio[] = [
-  { id: 'bloco-a', nome: 'Bloco A', tipo: 'residencial', original: 'Moradia', transformacao: 'Degradação após 1964', hoje: 'Restaurado 2010-2015', status: 'mantem', descricao: "Edifício curvo de 272 apartamentos em sete pavimentos, que acompanha a curva de nível do morro. A entrada é pelo 3º pavimento, por duas passarelas, onde ficavam a creche, a administração e pequenos comércios. Só foi ocupado no início dos anos 1960 e foi restaurado entre 2010 e 2015.", foto: 'img/bloco-a.svg', credito: C },
-  { id: 'blocos-b', nome: 'Blocos B1 e B2', tipo: 'residencial', original: 'Moradia duplex', transformacao: 'Cercados', hoje: 'Moradia', status: 'mantem', descricao: "Dois blocos menores de apartamentos duplex, inaugurados em 1950 na primeira etapa do conjunto. Junto com a escola e o posto de saúde, conformam a praça central. Seguem como moradia, mas hoje estão cercados.", foto: 'img/blocos-b.svg', credito: C },
-  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", foto: 'img/escola.svg', credito: C },
-  { id: 'posto', nome: 'Posto de saúde', tipo: 'coletivo', original: 'Atendimento local', transformacao: 'Vira hospital em 1953', hoje: 'Fechado em 1999, em ruína', status: 'ruina', descricao: "O posto de saúde atendia os moradores como extensão da habitação. Virou hospital em 1953, foi fechado em 1999 e hoje está em ruína.", foto: 'img/posto.svg', credito: C },
-  { id: 'lavanderia', nome: 'Lavanderia', tipo: 'coletivo', original: 'Lavanderia coletiva', transformacao: 'Funciona até meados dos anos 1970', hoje: 'Depósito da Fundação Leão XIII', status: 'mudou', descricao: "Concentrava a lavagem de roupa, retirada dos apartamentos para aliviar o trabalho das moradoras. Ficava longe do Bloco A, enfrentou resistência e funcionou só até meados dos anos 1970. Hoje é depósito da Fundação Leão XIII.", foto: 'img/lavanderia.svg', credito: C },
-  { id: 'mercado', nome: 'Mercado', tipo: 'coletivo', original: 'Mercado', transformacao: 'Comércio até 1980', hoje: 'Garagem da Fundação Leão XIII', status: 'mudou', descricao: "Fazia parte da ideia de um conjunto autossuficiente, com os serviços ao alcance dos moradores. Funcionou como comércio até 1980 e hoje é garagem da Fundação Leão XIII.", foto: 'img/mercado.svg', credito: C },
-  { id: 'jardins', nome: 'Jardins', tipo: 'coletivo', original: 'Áreas livres', transformacao: 'Descaracterizados', hoje: 'Ocupados por clube e estacionamentos', status: 'mudou', descricao: "Áreas livres com paisagismo de Roberto Burle Marx, pensadas para o convívio entre os blocos e os equipamentos. Foram descaracterizadas e hoje estão ocupadas por um clube e por estacionamentos.", foto: 'img/jardins.svg', credito: C },
+  { id: 'bloco-a', nome: 'Bloco A', tipo: 'residencial', original: 'Moradia', transformacao: 'Degradação após 1964', hoje: 'Restaurado 2010-2015', status: 'mantem', descricao: "Edifício curvo de 272 apartamentos em sete pavimentos, que acompanha a curva de nível do morro. A entrada é pelo 3º pavimento, por duas passarelas, onde ficavam a creche, a administração e pequenos comércios. Só foi ocupado no início dos anos 1960 e foi restaurado entre 2010 e 2015.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
+  { id: 'blocos-b', nome: 'Blocos B1 e B2', tipo: 'residencial', original: 'Moradia duplex', transformacao: 'Cercados', hoje: 'Moradia', status: 'mantem', descricao: "Dois blocos menores de apartamentos duplex, inaugurados em 1950 na primeira etapa do conjunto. Junto com a escola e o posto de saúde, conformam a praça central. Seguem como moradia, mas hoje estão cercados.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
+  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", foto: 'img/escola.svg', credito: '' },
+  { id: 'posto', nome: 'Posto de saúde', tipo: 'coletivo', original: 'Atendimento local', transformacao: 'Vira hospital em 1953', hoje: 'Fechado em 1999, em ruína', status: 'ruina', descricao: "O posto de saúde atendia os moradores como extensão da habitação. Virou hospital em 1953, foi fechado em 1999 e hoje está em ruína.", foto: 'img/posto.svg', credito: '' },
+  { id: 'lavanderia', nome: 'Lavanderia', tipo: 'coletivo', original: 'Lavanderia coletiva', transformacao: 'Funciona até meados dos anos 1970', hoje: 'Depósito da Fundação Leão XIII', status: 'mudou', descricao: "Concentrava a lavagem de roupa, retirada dos apartamentos para aliviar o trabalho das moradoras. Ficava longe do Bloco A, enfrentou resistência e funcionou só até meados dos anos 1970. Hoje é depósito da Fundação Leão XIII.", foto: 'img/lavanderia.svg', credito: '' },
+  { id: 'mercado', nome: 'Mercado', tipo: 'coletivo', original: 'Mercado', transformacao: 'Comércio até 1980', hoje: 'Garagem da Fundação Leão XIII', status: 'mudou', descricao: "Fazia parte da ideia de um conjunto autossuficiente, com os serviços ao alcance dos moradores. Funcionou como comércio até 1980 e hoje é garagem da Fundação Leão XIII.", foto: 'img/mercado.svg', credito: '' },
+  { id: 'jardins', nome: 'Jardins', tipo: 'coletivo', original: 'Áreas livres', transformacao: 'Descaracterizados', hoje: 'Ocupados por clube e estacionamentos', status: 'mudou', descricao: "Áreas livres com paisagismo de Roberto Burle Marx, pensadas para o convívio entre os blocos e os equipamentos. Foram descaracterizadas e hoje estão ocupadas por um clube e por estacionamentos.", foto: 'img/jardins.svg', credito: '' },
 ]
 
 export type TipoEvento = 'construcao' | 'ruptura'
@@ -56,12 +56,12 @@ export interface Evento extends Imagem {
 }
 
 export const linhaDoTempo: Evento[] = [
-  { ano: 1946, tipo: 'construcao', titulo: 'Criação do DHP', resumo: 'Reidy elabora o primeiro projeto', texto: 'A Prefeitura do Distrito Federal cria o Departamento de Habitação Popular. Sob Carmen Portinho, a partir de 1948, o DHP passa a tratar a moradia como serviço público ligado a saúde, educação e assistência social.', foto: 'img/tl-1946.svg', credito: C },
-  { ano: 1950, tipo: 'construcao', titulo: 'Primeira etapa inaugurada', resumo: 'Blocos B1 e B2, escola, posto e piscina', texto: 'Inauguram-se os blocos B1 e B2, a escola, o posto de saúde, a lavanderia e a piscina. O Bloco A seguiria em obras durante toda a década.', foto: 'img/tl-1950.svg', credito: C },
-  { ano: 1960, tipo: 'ruptura', titulo: 'Capital vai para Brasília', resumo: 'Prioridade passa à reurbanização de favelas', texto: 'Com a transferência da capital, o Rio deixa de ser Distrito Federal e a política habitacional muda de foco. O Bloco A só é ocupado no início dos anos 1960.', foto: 'img/tl-1960.svg', credito: C },
-  { ano: 1962, tipo: 'ruptura', titulo: 'Extinção do DHP', resumo: 'Blocos à COHAB, serviços à Fundação Leão XIII', texto: 'O DHP é extinto. Moradia e equipamentos passam a órgãos diferentes e o conjunto perde a gestão única que o sustentava.', foto: 'img/tl-1962.svg', credito: C },
-  { ano: 1964, tipo: 'ruptura', titulo: 'Golpe militar', resumo: 'Investimentos interrompidos', texto: 'Os investimentos em habitação de interesse social são descontinuados. Sem manutenção, o conjunto entra em degradação.', foto: 'img/tl-1964.svg', credito: C },
-  { ano: 2015, tipo: 'construcao', titulo: 'Restauro do Bloco A concluído', resumo: 'Obras iniciadas em dezembro de 2010', texto: 'O restauro, planejado em 2004 pelo escritório de Alfredo Britto, é executado sem remover os cerca de dois mil moradores. Pioneiro para a habitação popular, provoca forte valorização.', foto: 'img/tl-2015.svg', credito: C },
+  { ano: 1946, tipo: 'construcao', titulo: 'Criação do DHP', resumo: 'Reidy elabora o primeiro projeto', texto: 'A Prefeitura do Distrito Federal cria o Departamento de Habitação Popular. Sob Carmen Portinho, a partir de 1948, o DHP passa a tratar a moradia como serviço público ligado a saúde, educação e assistência social.', foto: 'img/tl-1946.svg', credito: '' },
+  { ano: 1950, tipo: 'construcao', titulo: 'Primeira etapa inaugurada', resumo: 'Blocos B1 e B2, escola, posto e piscina', texto: 'Inauguram-se os blocos B1 e B2, a escola, o posto de saúde, a lavanderia e a piscina. O Bloco A seguiria em obras durante toda a década.', foto: 'img/tl-1950.svg', credito: '' },
+  { ano: 1960, tipo: 'ruptura', titulo: 'Capital vai para Brasília', resumo: 'Prioridade passa à reurbanização de favelas', texto: 'Com a transferência da capital, o Rio deixa de ser Distrito Federal e a política habitacional muda de foco. O Bloco A só é ocupado no início dos anos 1960.', foto: 'img/tl-1960.svg', credito: '' },
+  { ano: 1962, tipo: 'ruptura', titulo: 'Extinção do DHP', resumo: 'Blocos à COHAB, serviços à Fundação Leão XIII', texto: 'O DHP é extinto. Moradia e equipamentos passam a órgãos diferentes e o conjunto perde a gestão única que o sustentava.', foto: 'img/tl-1962.svg', credito: '' },
+  { ano: 1964, tipo: 'ruptura', titulo: 'Golpe militar', resumo: 'Investimentos interrompidos', texto: 'Os investimentos em habitação de interesse social são descontinuados. Sem manutenção, o conjunto entra em degradação.', foto: 'img/tl-1964.svg', credito: '' },
+  { ano: 2015, tipo: 'construcao', titulo: 'Restauro do Bloco A concluído', resumo: 'Obras iniciadas em dezembro de 2010', texto: 'O restauro, planejado em 2004 pelo escritório de Alfredo Britto, é executado sem remover os cerca de dois mil moradores. Pioneiro para a habitação popular, provoca forte valorização.', foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
 ]
 
 export const tempoTextos = {
@@ -155,15 +155,40 @@ const paragrafos: Record<string, string[]> = {
   ],
 }
 const cap = (slug: string, numero: number, titulo: string, subtitulo: string): Capitulo => ({
-  slug, numero, titulo, subtitulo, paragrafos: paragrafos[slug], foto: `img/cap-${slug}.svg`, credito: C,
-  midia: [{ depois: 0, bloco: { tipo: 'imagem', foto: `img/cap-${slug}.svg`, credito: C, legenda: titulo, alt: `Imagem do capítulo ${subtitulo}` } }],
+  slug, numero, titulo, subtitulo, paragrafos: paragrafos[slug], foto: `img/cap-${slug}.svg`, credito: '',
+  midia: [],
 })
 const extras: Record<string, BlocoMidia[]> = {
-  sociedade: [{ depois: 2, bloco: { tipo: 'citacao', texto: "O que foi pensado como emancipação acabou vivido como imposição." } }],
-  economia: [{ depois: 3, bloco: { tipo: 'citacao', texto: "Concebido fora da lógica de mercado, o conjunto acabou reinserido nela de maneira informal." } }],
-  identificacao: [{ depois: 1, bloco: { tipo: 'citacao', texto: '522 unidades para funcionários municipais de baixos salários, com aluguel descontado em folha.' } }],
-  projeto: [{ depois: 1, bloco: { tipo: 'diagrama', id: 'fluxos', legenda: 'Fluxos de circulação e graus de publicidade do conjunto. Esquema sem escala.' } }, { depois: 5, bloco: { tipo: 'citacao', texto: "Um projeto que organiza com rigor a vida coletiva, mas deixa pouco espaço para a maneira como os moradores de fato vivem." } }],
-  materiais: [{ depois: 1, bloco: { tipo: 'diagrama', id: 'corte', legenda: 'Corte esquemático do Bloco A, sem escala.' } }],
+  identificacao: [
+    { depois: 0, bloco: { tipo: 'imagem', foto: 'img/mapa-localizacao.png', credito: 'Produção do grupo', legenda: 'Localização do conjunto na malha urbana de São Cristóvão', alt: 'Mapa de localização do conjunto' } },
+    { depois: 1, bloco: { tipo: 'citacao', texto: '522 unidades para funcionários municipais de baixos salários, com aluguel descontado em folha.' } },
+  ],
+  contexto: [
+    { depois: 2, bloco: { tipo: 'imagem', foto: 'img/carmen-portinho.jpg', credito: 'IAB', legenda: 'Carmen Portinho', alt: 'Foto de Carmen Portinho' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/exposicao-ny-1958.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Abertura da exposição sobre habitação popular em Nova York, em 1958', alt: 'Exposição em Nova York, 1958' } },
+  ],
+  territorio: [
+    { depois: 1, bloco: { tipo: 'imagem', foto: 'img/implantacao.png', credito: 'Produção do grupo', legenda: 'Implantação: blocos residenciais em vermelho, equipamentos coletivos em azul', alt: 'Diagrama de implantação' } },
+    { depois: 2, bloco: { tipo: 'imagem', foto: 'img/implantacao-pilotis.png', credito: 'Produção do grupo', legenda: 'Pilotis em diferentes alturas acompanham o relevo', alt: 'Diagrama dos pilotis' } },
+  ],
+  projeto: [
+    { depois: 0, bloco: { tipo: 'imagem', foto: 'img/setorizacao-3d.png', credito: 'Produção do grupo', legenda: 'Setorização: serviços (azul escuro), pavimento de uso coletivo (azul claro) e residencial (cinza)', alt: 'Diagrama de setorização 3D' } },
+    { depois: 1, bloco: { tipo: 'diagrama', id: 'fluxos', legenda: 'Fluxos de circulação e graus de publicidade do conjunto. Esquema sem escala.' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/plantas-setorizadas.png', credito: 'Produção do grupo', legenda: 'Plantas setorizadas: sala, cozinha, banheiro, quarto e circulação', alt: 'Plantas setorizadas dos apartamentos' } },
+    { depois: 5, bloco: { tipo: 'citacao', texto: "Um projeto que organiza com rigor a vida coletiva, mas deixa pouco espaço para a maneira como os moradores de fato vivem." } },
+  ],
+  materiais: [
+    { depois: 1, bloco: { tipo: 'diagrama', id: 'corte', legenda: 'Corte esquemático do Bloco A, sem escala.' } },
+    { depois: 1, bloco: { tipo: 'imagem', foto: 'img/pilotis-estrutura.png', credito: 'Produção do grupo', legenda: 'Estrutura em concreto armado sobre pilotis', alt: 'Estrutura dos pilotis' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/cobogo-restauro.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Recuperação dos cobogós durante o restauro', alt: 'Cobogós sendo restaurados' } },
+  ],
+  sociedade: [
+    { depois: 2, bloco: { tipo: 'citacao', texto: "O que foi pensado como emancipação acabou vivido como imposição." } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/grades-corredor.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Grades instaladas pelos moradores nos corredores', alt: 'Grades nos corredores' } },
+  ],
+  economia: [
+    { depois: 3, bloco: { tipo: 'citacao', texto: "Concebido fora da lógica de mercado, o conjunto acabou reinserido nela de maneira informal." } },
+  ],
   transformacoes: [
     { depois: 1, bloco: { tipo: 'diagrama', id: 'transformacoes', legenda: 'O que aconteceu com cada edifício.' } },
     { depois: 1, bloco: { tipo: 'antesHoje' } },
@@ -215,7 +240,13 @@ export const referencias = {
     "PEDREGULHO Housing Complex. In: WIKIPEDIA: the free encyclopedia. [S. l.: s. n.], 2026. Disponível em: https://en.wikipedia.org/wiki/Pedregulho_Housing_Complex. Acesso em: 31 out. 2026.",
     "SILVA, Rafael Spindler da. O Conjunto Pedregulho e algumas relações compositivas. Cadernos de Arquitetura e Urbanismo, Belo Horizonte, v. 12, n. 13, p. 77-93, dez. 2005.",
   ],
-  creditos: ['[CRÉDITO DO GRUPO]', 'Imagem de compartilhamento (Open Graph): ilustração gerada com IA (ChatGPT), sob direção do grupo.'],
+  creditos: [
+    'Produção do grupo: mapa-localizacao.png, implantacao.png, implantacao-pilotis.png, setorizacao-3d.png, plantas-setorizadas.png, pilotis-estrutura.png',
+    'IAB: carmen-portinho.jpg',
+    'Arte fora do Museu: aerea-hoje.jpg',
+    '[CONFIRMAR CRÉDITO]: home-bloco-a.jpg, exposicao-ny-1958.jpg, cobogo-restauro.jpg, grades-corredor.jpg, timeline-capa.jpg, aerea-antes.jpg',
+    'Imagem de compartilhamento (Open Graph): ilustração gerada com IA (ChatGPT), sob direção do grupo.',
+  ],
 }
 
 export interface Secao { rotulo: string; to: string; subtitulo: string }
@@ -290,8 +321,10 @@ export const home = {
 }
 
 export const rodape = {
-  disciplina: '[NOME DA DISCIPLINA]',
-  integrantes: ['[INTEGRANTE 1]', '[INTEGRANTE 2]', '[INTEGRANTE 3]', '[INTEGRANTE 4]'],
+  disciplina: '[PREENCHER]',
+  professor: '[PREENCHER]',
+  integrantes: ['[PREENCHER]'],
+  instituicao: '[PREENCHER]',
   notaIA: 'Ferramenta de IA utilizada: Claude, no apoio à organização e revisão dos textos, à pesquisa de fontes e à produção de diagramas. Conteúdo verificado pelo grupo.',
 }
 

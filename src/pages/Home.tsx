@@ -21,19 +21,19 @@ export default function Home() {
 
         {/* Composição cartaz */}
         <div className="relative mt-5 min-h-[200px] flex-1">
-          <div className="absolute -right-10 -top-2 aspect-square w-[78%] rounded-full bg-marinho" />
-          <div className="absolute bottom-0 left-0 z-10 h-16 w-16 bg-vermelho" />
+          <div className="pointer-events-none absolute -right-10 -top-2 aspect-square w-[78%] rounded-full bg-marinho" />
+          <div className="pointer-events-none absolute bottom-0 left-0 z-10 h-16 w-16 bg-vermelho" />
           <Foto
             eager sizes="(min-width: 480px) 440px, 90vw"
             src={home.imagem}
             onError={e => { const t = e.currentTarget; if (!t.dataset.fb) { t.dataset.fb = '1'; t.removeAttribute('srcset'); t.closest('picture')?.querySelector('source')?.remove(); t.src = import.meta.env.BASE_URL + home.imagemFallback } }}
             alt={home.imagemAlt}
-            className="absolute bottom-3 left-8 right-0 top-6 z-[5] h-[calc(100%-2.25rem)] w-[calc(100%-2rem)] object-cover"
+            className="pointer-events-none absolute bottom-3 left-8 right-0 top-6 z-[5] h-[calc(100%-2.25rem)] w-[calc(100%-2rem)] object-cover"
             style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 82%)' }}
           />
         </div>
 
-        <div className="mt-5 flex flex-col gap-3">
+        <div className="relative z-20 mt-5 flex flex-col gap-3">
           <Link to="/mapa" className="flex h-12 w-full items-center justify-center rounded-full bg-marinho font-titulo text-base font-extrabold text-white">{home.botaoMapa}</Link>
           <Link to="/linha-do-tempo" className="flex h-12 w-full items-center justify-center rounded-full border-2 border-marinho font-titulo text-base font-extrabold text-marinho">{home.botaoTempo}</Link>
         </div>
@@ -84,7 +84,9 @@ export default function Home() {
       <Reveal>
         <footer className="mt-16 border-t-2 border-tinta pt-4 text-sm">
           <p className="font-titulo text-base font-extrabold">{rodape.disciplina}</p>
-          <p className="mt-2 text-cinza">{rodape.integrantes.join(' · ')}</p>
+          <p className="mt-1 text-cinza">Professor(a): {rodape.professor}</p>
+          <p className="mt-1 text-cinza">Integrantes: {rodape.integrantes.join(', ')}</p>
+          <p className="mt-1 text-cinza">Instituição: {rodape.instituicao}</p>
           <p className="mt-4 text-xs leading-relaxed text-cinza">{rodape.notaIA}</p>
         </footer>
       </Reveal>
