@@ -46,7 +46,7 @@ export default function Tese() {
     <>
       <Titulo kicker="Tese">{tese.titulo}</Titulo>
       <Reveal>
-        <p className="mb-10 font-titulo text-[28px] font-black leading-[1.08] tracking-tight">{tese.texto}</p>
+        <p className="mb-10 max-w-[40ch] font-titulo text-[22px] font-black leading-[1.2] tracking-tight">{tese.texto}</p>
       </Reveal>
 
       <div className="flex flex-col gap-3">
