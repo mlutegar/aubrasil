@@ -323,7 +323,7 @@ export const home = {
 export const rodape = {
   disciplina: 'AU Brasil',
   grupo: 'Trio Brasil',
-  integrantes: ['Michel Lutegar', 'Alinne Zimmermann', 'Cinthia Morais'],
+  integrantes: ['Alinne Zimmermann', 'Cinthia Morais', 'Michel Lutegar'],
   notaIA: 'Ferramenta de IA utilizada: Claude, no apoio à organização e revisão dos textos, à pesquisa de fontes e à produção de diagramas. Conteúdo verificado pelo grupo.',
 }
 
