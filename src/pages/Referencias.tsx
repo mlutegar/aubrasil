@@ -1,3 +1,4 @@
+import { creditoVisivel } from '../lib/credito'
 import type { ReactNode } from 'react'
 import Titulo from '../components/Titulo'
 import { antesHoje, capitulos, edificios, home, linhaDoTempo, referencias, referenciasTextos as T, rodape, tempoTextos, textos } from '../data/content'
@@ -50,7 +51,7 @@ export default function Referencias() {
         <ul className="space-y-3 text-[14px] leading-snug">
           {imagens.map(i => (
             <li key={i.chave}>
-              <span className="font-bold">{i.nome}.</span> <span className="text-cinza">{textos.credito}:</span> {comLinks(i.credito)}
+              <span className="font-bold">{i.nome}.</span> {creditoVisivel(i.credito) && <><span className="text-cinza">{textos.credito}:</span> {comLinks(i.credito)}</>}
             </li>
           ))}
           {referencias.creditos.map(c => <li key={c}>{comLinks(c)}</li>)}

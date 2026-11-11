@@ -1,3 +1,4 @@
+import { creditoVisivel } from '../../lib/credito'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useDragControls } from 'framer-motion'
@@ -98,7 +99,7 @@ export default function BottomSheet({ edificio: e, onClose }: { edificio: Edific
             <figure className="m-0">
               <img src={import.meta.env.BASE_URL + f.foto} loading="lazy" decoding="async" alt={`${e.nome}: ${T.abas[aba]}`} className="aspect-[4/3] w-full bg-concreto object-cover" />
               <figcaption className="mt-2 text-xs italic text-cinza">
-                {f.legenda ?? `${e.nome}, ${T.abas[aba].toLowerCase()}`}. {textos.credito}: {f.credito}
+                {f.legenda ?? `${e.nome}, ${T.abas[aba].toLowerCase()}`}.{creditoVisivel(f.credito) && <> {textos.credito}: {f.credito}</>}
               </figcaption>
             </figure>
             <p className="mt-4 font-titulo text-lg font-extrabold">{e[CAMPOS[aba]]}</p>

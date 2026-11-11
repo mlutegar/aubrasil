@@ -1,3 +1,4 @@
+import { creditoVisivel } from '../lib/credito'
 import { useCallback, useRef, useState } from 'react'
 import { antesHoje as D, textos } from '../data/content'
 import Foto from './Foto'
@@ -63,7 +64,7 @@ export default function AntesHoje() {
       </div>
       <figcaption className="mt-2 grid grid-cols-2 gap-3 text-[13px] leading-snug">
         {[D.antes, D.hoje].map((l, i) => (
-          <span key={i}>{l.legenda}<span className="block text-cinza">{textos.credito}: {l.credito}</span></span>
+          <span key={i}>{l.legenda}{creditoVisivel(l.credito) && <span className="block text-cinza">{textos.credito}: {l.credito}</span>}</span>
         ))}
       </figcaption>
     </figure>
