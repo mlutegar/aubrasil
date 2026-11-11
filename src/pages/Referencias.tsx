@@ -22,13 +22,14 @@ function creditosDasImagens(): ItemCredito[] {
   add(antesHoje.antes.foto, `Antes: ${antesHoje.antes.legenda}`, antesHoje.antes.credito)
   add(antesHoje.hoje.foto, `Hoje: ${antesHoje.hoje.legenda}`, antesHoje.hoje.credito)
   edificios.forEach(e => {
-    add(e.foto, e.nome, e.credito)
     ;([['Original', e.fotoOriginal], ['Transformação', e.fotoTransformacao], ['Hoje', e.fotoHoje]] as const).forEach(([aba, f]) => { if (f) add(f.foto, `${e.nome} (${aba})`, f.credito) })
   })
-  linhaDoTempo.forEach(ev => add(ev.foto, `${ev.ano}: ${ev.titulo}`, ev.credito))
+  linhaDoTempo.forEach(ev => { if (ev.foto) add(ev.foto, `${ev.ano}: ${ev.titulo}`, ev.credito ?? '') })
   capitulos.forEach(c => {
-    add(c.foto, `Capítulo ${c.numero}: ${c.titulo}`, c.credito)
-    c.midia.forEach(b => { if (b.bloco.tipo === 'imagem') add(b.bloco.foto, `Capítulo ${c.numero}: ${b.bloco.legenda}`, b.bloco.credito) })
+    c.midia.forEach(b => {
+      if (b.bloco.tipo === 'imagem') add(b.bloco.foto, `Capítulo ${c.numero}: ${b.bloco.legenda}`, b.bloco.credito)
+      if (b.bloco.tipo === 'par') b.bloco.fotos.forEach(f => add(f.foto, `Capítulo ${c.numero}: ${b.bloco.tipo === 'par' ? b.bloco.legenda : ''} (${f.rotulo.toLowerCase()})`, b.bloco.tipo === 'par' ? b.bloco.credito : ''))
+    })
   })
   return [...mapa.values()]
 }

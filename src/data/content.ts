@@ -20,13 +20,13 @@ export const ficha = {
 export type TipoEdificio = 'residencial' | 'coletivo'
 export type StatusEdificio = 'mantem' | 'mudou' | 'ruina'
 
-export interface Edificio extends Imagem {
+export interface Edificio {
   id: string; nome: string; tipo: TipoEdificio
   original: string; transformacao: string; hoje: string
   status: StatusEdificio; descricao: string
   /** Opcional. Se vazio, a sheet mostra "Bloco residencial" / "Equipamento coletivo". */
   subtitulo?: string
-  /** Opcionais: foto própria de cada aba da sheet. Se ausente, usa `foto`/`credito`. */
+  /** Opcionais: foto de cada aba da sheet. Sem foto real, a sheet mostra a miniatura SVG do edifício. */
   fotoOriginal?: Imagem
   fotoTransformacao?: Imagem
   fotoHoje?: Imagem
@@ -39,32 +39,39 @@ export const statusInfo: Record<StatusEdificio, { rotulo: string; cor: string; t
   ruina: { rotulo: 'Em ruína', cor: '#D7261E', texto: '#FFFFFF' },
 }
 
-const HOME_CREDITO = '[CONFIRMAR CRÉDITO]'
+const HOME_CREDITO = 'Alfredo Britto, 2015'
 export const edificios: Edificio[] = [
-  { id: 'bloco-a', nome: 'Bloco A', tipo: 'residencial', original: 'Moradia', transformacao: 'Degradação após 1964', hoje: 'Restaurado 2010-2015', status: 'mantem', descricao: "Edifício curvo de 272 apartamentos em sete pavimentos, que acompanha a curva de nível do morro. A entrada é pelo 3º pavimento, por duas passarelas, onde ficavam a creche, a administração e pequenos comércios. Só foi ocupado no início dos anos 1960 e foi restaurado entre 2010 e 2015.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
-  { id: 'blocos-b', nome: 'Blocos B1 e B2', tipo: 'residencial', original: 'Moradia duplex', transformacao: 'Cercados', hoje: 'Moradia', status: 'mantem', descricao: "Dois blocos menores de apartamentos duplex, inaugurados em 1950 na primeira etapa do conjunto. Junto com a escola e o posto de saúde, conformam a praça central. Seguem como moradia, mas hoje estão cercados.", foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
-  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", foto: 'img/escola.svg', credito: '',
-    fotoOriginal: { foto: 'img/escola-historica.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Escola do conjunto, foto histórica' },
-    fotoTransformacao: { foto: 'img/ginasio-historico.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Ginásio do conjunto, foto histórica' },
+  { id: 'bloco-a', nome: 'Bloco A', tipo: 'residencial', original: 'Moradia', transformacao: 'Degradação após 1964', hoje: 'Restaurado 2010-2015', status: 'mantem', descricao: "Edifício curvo de 272 apartamentos em sete pavimentos, que acompanha a curva de nível do morro. A entrada é pelo 3º pavimento, por duas passarelas, onde ficavam a creche, a administração e pequenos comércios. Só foi ocupado no início dos anos 1960 e foi restaurado entre 2010 e 2015.",
+    fotoOriginal: { foto: 'img/posto-anos-1950.jpg', credito: 'Arquivo Geral da Cidade do Rio de Janeiro', legenda: 'Bloco A em construção ao fundo, anos 1950' },
+    fotoTransformacao: { foto: 'img/bloco-a-anos-1970.jpg', credito: 'Arquivo Nacional', legenda: 'Bloco A nos anos 1970' },
+    fotoHoje: { foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO, legenda: 'Bloco A após o restauro' } },
+  { id: 'blocos-b', nome: 'Blocos B1 e B2', tipo: 'residencial', original: 'Moradia duplex', transformacao: 'Cercados', hoje: 'Moradia', status: 'mantem', descricao: "Dois blocos menores de apartamentos duplex, inaugurados em 1950 na primeira etapa do conjunto. Junto com a escola e o posto de saúde, conformam a praça central. Seguem como moradia, mas hoje estão cercados." },
+  { id: 'escola', nome: 'Escola e ginásio (com piscina)', tipo: 'coletivo', original: 'Uso do conjunto', transformacao: 'Gestão municipal', hoje: 'Isolados por cercas', status: 'mudou', descricao: "Escola, ginásio e piscina ficam na parte baixa do terreno, junto à praça central. Sob gestão municipal, mantiveram o uso original e estão em melhor estado, mas foram separados do conjunto por cercas.", 
+    fotoOriginal: { foto: 'img/ginasio-anos-1950.jpg', credito: 'Arquivo Geral da Cidade do Rio de Janeiro', legenda: 'Crianças em atividade no ginásio, anos 1950' },
+    fotoTransformacao: { foto: 'img/escola-historica.jpg', credito: '[CONFIRMAR CRÉDITO]', legenda: 'Escola do conjunto, foto histórica' },
     fotoHoje: { foto: 'img/ginasio-painel-hoje.jpg', credito: 'Márcia Foletto / O Globo', legenda: 'Ginásio e painel de azulejos, com o Bloco A ao fundo' } },
-  { id: 'posto', nome: 'Posto de saúde', tipo: 'coletivo', original: 'Atendimento local', transformacao: 'Vira hospital em 1953', hoje: 'Fechado em 1999, em ruína', status: 'ruina', descricao: "O posto de saúde atendia os moradores como extensão da habitação. Virou hospital em 1953, foi fechado em 1999 e hoje está em ruína.", foto: 'img/posto.svg', credito: '' },
-  { id: 'lavanderia', nome: 'Lavanderia', tipo: 'coletivo', original: 'Lavanderia coletiva', transformacao: 'Funciona até meados dos anos 1970', hoje: 'Depósito da Fundação Leão XIII', status: 'mudou', descricao: "Concentrava a lavagem de roupa, retirada dos apartamentos para aliviar o trabalho das moradoras. Ficava longe do Bloco A, enfrentou resistência e funcionou só até meados dos anos 1970. Hoje é depósito da Fundação Leão XIII.", foto: 'img/lavanderia.svg', credito: '' },
-  { id: 'mercado', nome: 'Mercado', tipo: 'coletivo', original: 'Mercado', transformacao: 'Comércio até 1980', hoje: 'Garagem da Fundação Leão XIII', status: 'mudou', descricao: "Fazia parte da ideia de um conjunto autossuficiente, com os serviços ao alcance dos moradores. Funcionou como comércio até 1980 e hoje é garagem da Fundação Leão XIII.", foto: 'img/mercado.svg', credito: '' },
-  { id: 'jardins', nome: 'Jardins', tipo: 'coletivo', original: 'Áreas livres', transformacao: 'Descaracterizados', hoje: 'Ocupados por clube e estacionamentos', status: 'mudou', descricao: "Áreas livres com paisagismo de Roberto Burle Marx, pensadas para o convívio entre os blocos e os equipamentos. Foram descaracterizadas e hoje estão ocupadas por um clube e por estacionamentos.", foto: 'img/jardins.svg', credito: '' },
+  { id: 'posto', nome: 'Posto de saúde', tipo: 'coletivo', original: 'Atendimento local', transformacao: 'Vira hospital em 1953', hoje: 'Fechado em 1999, em ruína', status: 'ruina', descricao: "O posto de saúde atendia os moradores como extensão da habitação. Virou hospital em 1953, foi fechado em 1999 e hoje está em ruína.", 
+    fotoOriginal: { foto: 'img/posto-anos-1950.jpg', credito: 'Arquivo Geral da Cidade do Rio de Janeiro', legenda: 'Posto de saúde com os painéis de Anísio Medeiros, anos 1950' } },
+  { id: 'lavanderia', nome: 'Lavanderia', tipo: 'coletivo', original: 'Lavanderia coletiva', transformacao: 'Funciona até meados dos anos 1970', hoje: 'Depósito da Fundação Leão XIII', status: 'mudou', descricao: "Concentrava a lavagem de roupa, retirada dos apartamentos para aliviar o trabalho das moradoras. Ficava longe do Bloco A, enfrentou resistência e funcionou só até meados dos anos 1970. Hoje é depósito da Fundação Leão XIII.", 
+    fotoHoje: { foto: 'img/lavanderia-mercado-2004.jpg', credito: 'NASCIMENTO, 2017', legenda: 'Edifício da antiga lavanderia e mercado, 2004' } },
+  { id: 'mercado', nome: 'Mercado', tipo: 'coletivo', original: 'Mercado', transformacao: 'Comércio até 1980', hoje: 'Garagem da Fundação Leão XIII', status: 'mudou', descricao: "Fazia parte da ideia de um conjunto autossuficiente, com os serviços ao alcance dos moradores. Funcionou como comércio até 1980 e hoje é garagem da Fundação Leão XIII.", 
+    fotoHoje: { foto: 'img/lavanderia-mercado-2004.jpg', credito: 'NASCIMENTO, 2017', legenda: 'Edifício da antiga lavanderia e mercado, 2004' } },
+  { id: 'jardins', nome: 'Jardins', tipo: 'coletivo', original: 'Áreas livres', transformacao: 'Descaracterizados', hoje: 'Ocupados por clube e estacionamentos', status: 'mudou', descricao: "Áreas livres com paisagismo de Roberto Burle Marx, pensadas para o convívio entre os blocos e os equipamentos. Foram descaracterizadas e hoje estão ocupadas por um clube e por estacionamentos." },
 ]
 
 export type TipoEvento = 'construcao' | 'ruptura'
-export interface Evento extends Imagem {
+/** `foto` opcional: sem foto real, o card abre sem área de foto. */
+export interface Evento extends Partial<Imagem> {
   ano: number; tipo: TipoEvento; titulo: string; resumo: string; texto: string
 }
 
 export const linhaDoTempo: Evento[] = [
-  { ano: 1946, tipo: 'construcao', titulo: 'Criação do DHP', resumo: 'Reidy elabora o primeiro projeto', texto: 'A Prefeitura do Distrito Federal cria o Departamento de Habitação Popular. Sob Carmen Portinho, a partir de 1948, o DHP passa a tratar a moradia como serviço público ligado a saúde, educação e assistência social.', foto: 'img/tl-1946.svg', credito: '' },
-  { ano: 1950, tipo: 'construcao', titulo: 'Primeira etapa inaugurada', resumo: 'Blocos B1 e B2, escola, posto e piscina', texto: 'Inauguram-se os blocos B1 e B2, a escola, o posto de saúde, a lavanderia e a piscina. O Bloco A seguiria em obras durante toda a década.', foto: 'img/tl-1950.svg', credito: '' },
+  { ano: 1946, tipo: 'construcao', titulo: 'Criação do DHP', resumo: 'Reidy elabora o primeiro projeto', texto: 'A Prefeitura do Distrito Federal cria o Departamento de Habitação Popular. Sob Carmen Portinho, a partir de 1948, o DHP passa a tratar a moradia como serviço público ligado a saúde, educação e assistência social.' },
+  { ano: 1950, tipo: 'construcao', titulo: 'Primeira etapa inaugurada', resumo: 'Blocos B1 e B2, escola, posto e piscina', texto: 'Inauguram-se os blocos B1 e B2, a escola, o posto de saúde, a lavanderia e a piscina. O Bloco A seguiria em obras durante toda a década.', foto: 'img/posto-anos-1950.jpg', credito: 'Arquivo Geral da Cidade do Rio de Janeiro', legenda: 'Posto de saúde e, ao fundo, o Bloco A ainda em construção' },
   { ano: 1960, tipo: 'ruptura', titulo: 'Capital vai para Brasília', resumo: 'Prioridade passa à reurbanização de favelas', texto: 'Com a transferência da capital, o Rio deixa de ser Distrito Federal e a política habitacional muda de foco. O Bloco A só é ocupado no início dos anos 1960.', foto: 'img/conjunto-historico.jpg', credito: 'EAD/PUCV', legenda: 'Vista do conjunto com o Bloco A concluído' },
-  { ano: 1962, tipo: 'ruptura', titulo: 'Extinção do DHP', resumo: 'Blocos à COHAB, serviços à Fundação Leão XIII', texto: 'O DHP é extinto. Moradia e equipamentos passam a órgãos diferentes e o conjunto perde a gestão única que o sustentava.', foto: 'img/tl-1962.svg', credito: '' },
-  { ano: 1964, tipo: 'ruptura', titulo: 'Golpe militar', resumo: 'Investimentos interrompidos', texto: 'Os investimentos em habitação de interesse social são descontinuados. Sem manutenção, o conjunto entra em degradação.', foto: 'img/tl-1964.svg', credito: '' },
-  { ano: 2015, tipo: 'construcao', titulo: 'Restauro do Bloco A concluído', resumo: 'Obras iniciadas em dezembro de 2010', texto: 'O restauro, planejado em 2004 pelo escritório de Alfredo Britto, é executado sem remover os cerca de dois mil moradores. Pioneiro para a habitação popular, provoca forte valorização.', foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO },
+  { ano: 1962, tipo: 'ruptura', titulo: 'Extinção do DHP', resumo: 'Blocos à COHAB, serviços à Fundação Leão XIII', texto: 'O DHP é extinto. Moradia e equipamentos passam a órgãos diferentes e o conjunto perde a gestão única que o sustentava.' },
+  { ano: 1964, tipo: 'ruptura', titulo: 'Golpe militar', resumo: 'Investimentos interrompidos', texto: 'Os investimentos em habitação de interesse social são descontinuados. Sem manutenção, o conjunto entra em degradação.', foto: 'img/bloco-a-anos-1970.jpg', credito: 'Arquivo Nacional', legenda: 'Bloco A nos anos 1970' },
+  { ano: 2015, tipo: 'construcao', titulo: 'Restauro do Bloco A concluído', resumo: 'Obras iniciadas em dezembro de 2010', texto: 'O restauro, planejado em 2004 pelo escritório de Alfredo Britto, é executado sem remover os cerca de dois mil moradores. Pioneiro para a habitação popular, provoca forte valorização.', foto: 'img/home-bloco-a.jpg', credito: HOME_CREDITO, legenda: 'Bloco A após o restauro' },
 ]
 
 export const tempoTextos = {
@@ -73,7 +80,6 @@ export const tempoTextos = {
   frase: 'A história do conjunto em diálogo com as transformações políticas e urbanas do Brasil.',
   botao: 'Explorar linha do tempo →',
   imagem: 'img/timeline-capa.jpg',
-  imagemFallback: 'img/bloco-a.svg',
   imagemAlt: 'Vista aérea do conjunto, c. anos 1960',
   imagemLegenda: 'Vista aérea do conjunto, c. anos 1960',
   imagemCredito: 'Nabil Bonduki',
@@ -93,12 +99,13 @@ export const tempoTextos = {
 export type Midia =
   | { tipo: 'imagem'; foto: string; credito: Credito; legenda: string; alt: string }
   | { tipo: 'citacao'; texto: string; autor?: string }
+  | { tipo: 'par'; fotos: [{ foto: string; alt: string; rotulo: string }, { foto: string; alt: string; rotulo: string }]; credito: Credito; legenda: string }
   | { tipo: 'antesHoje' }
   | { tipo: 'diagrama'; id: 'fluxos' | 'corte' | 'transformacoes'; legenda: string }
 /** `depois`: índice do parágrafo após o qual o bloco aparece (0 = depois do 1º). */
 export interface BlocoMidia { depois: number; bloco: Midia }
 
-export interface Capitulo extends Imagem {
+export interface Capitulo {
   slug: string; numero: number; titulo: string; subtitulo: string; paragrafos: string[]; midia: BlocoMidia[]
 }
 const paragrafos: Record<string, string[]> = {
@@ -158,12 +165,13 @@ const paragrafos: Record<string, string[]> = {
   ],
 }
 const cap = (slug: string, numero: number, titulo: string, subtitulo: string): Capitulo => ({
-  slug, numero, titulo, subtitulo, paragrafos: paragrafos[slug], foto: `img/cap-${slug}.svg`, credito: '',
+  slug, numero, titulo, subtitulo, paragrafos: paragrafos[slug],
   midia: [],
 })
 const extras: Record<string, BlocoMidia[]> = {
   identificacao: [
     { depois: 0, bloco: { tipo: 'imagem', foto: 'img/mapa-localizacao.png', credito: 'Produção do grupo', legenda: 'Localização do conjunto na malha urbana de São Cristóvão', alt: 'Mapa de localização do conjunto' } },
+    { depois: 1, bloco: { tipo: 'imagem', foto: 'img/projeto-1948.png', credito: 'Organizado por Flávia Brito do Nascimento, desenhado por Natália Held, 2011', legenda: 'Projeto do Conjunto Residencial do Pedregulho, 1948', alt: 'Desenho do projeto do Conjunto Residencial do Pedregulho, 1948' } },
     { depois: 1, bloco: { tipo: 'citacao', texto: '522 unidades para funcionários municipais de baixos salários, com aluguel descontado em folha.' } },
   ],
   contexto: [
@@ -185,6 +193,8 @@ const extras: Record<string, BlocoMidia[]> = {
     { depois: 1, bloco: { tipo: 'diagrama', id: 'corte', legenda: 'Corte esquemático do Bloco A, sem escala.' } },
     { depois: 1, bloco: { tipo: 'imagem', foto: 'img/pilotis-estrutura.png', credito: 'Produção do grupo', legenda: 'Estrutura em concreto armado sobre pilotis', alt: 'Estrutura dos pilotis' } },
     { depois: 1, bloco: { tipo: 'imagem', foto: 'img/ventilacao-planta.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Ventilação dos banheiros (azul) e das cozinhas (amarelo) no apartamento do Bloco A', alt: 'Planta do apartamento do Bloco A com a ventilação de banheiros e cozinhas' } },
+    { depois: 3, bloco: { tipo: 'imagem', foto: 'img/esquadrias-antes.jpg', credito: 'Alfredo Britto, 2004', legenda: 'Esquadrias da fachada oeste do Bloco A antes do restauro', alt: 'Esquadrias da fachada oeste do Bloco A antes do restauro' } },
+    { depois: 3, bloco: { tipo: 'par', fotos: [{ foto: 'img/cobogo-antes.jpg', alt: 'Painel de cobogós antes do restauro', rotulo: 'Antes' }, { foto: 'img/cobogo-depois.jpg', alt: 'Painel de cobogós depois do restauro', rotulo: 'Depois' }], credito: 'Flávia Brito do Nascimento, 2004 e 2015', legenda: 'Painel de cobogós antes e depois do restauro' } },
     { depois: 3, bloco: { tipo: 'imagem', foto: 'img/cobogo-restauro.jpg', credito: 'Guilherme Pinto', legenda: 'Pedregulho: quatro anos de reforma', alt: 'Cobogós sendo restaurados' } },
   ],
   sociedade: [
@@ -195,6 +205,8 @@ const extras: Record<string, BlocoMidia[]> = {
     { depois: 3, bloco: { tipo: 'citacao', texto: "Concebido fora da lógica de mercado, o conjunto acabou reinserido nela de maneira informal." } },
   ],
   transformacoes: [
+    { depois: 2, bloco: { tipo: 'imagem', foto: 'img/terreo-antes-2000.jpg', credito: 'Flávia Brito do Nascimento', legenda: 'Pavimento térreo antes das obras, 2000', alt: 'Pavimento térreo antes das obras, 2000' } },
+    { depois: 2, bloco: { tipo: 'imagem', foto: 'img/pilares-obras-2011.jpg', credito: 'Flávia Brito do Nascimento', legenda: 'Pilares do pavimento térreo em obras, 2011', alt: 'Pilares do pavimento térreo em obras, 2011' } },
     { depois: 3, bloco: { tipo: 'imagem', foto: 'img/acessibilidade-plantas.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Obstáculos à acessibilidade nas plantas dos blocos A e B: os círculos de 1,50 m de diâmetro (área de giro de cadeira de rodas exigida pela NBR 9050) não cabem nos cômodos e circulações', alt: 'Plantas dos blocos A e B com círculos de giro de 1,50 m que não cabem nos cômodos' } },
     { depois: 3, bloco: { tipo: 'imagem', foto: 'img/acessibilidade-escadas.png', credito: 'Alinne Zimmermann e Maria Eugênia', legenda: 'Corte: as escadas (em vermelho) são a única opção de deslocamento vertical nos blocos residenciais', alt: 'Corte dos blocos com as escadas em vermelho' } },
     { depois: 1, bloco: { tipo: 'diagrama', id: 'transformacoes', legenda: 'O que aconteceu com cada edifício.' } },
@@ -258,7 +270,7 @@ export const referencias = {
     'Nabil Bonduki: timeline-capa.jpg, aerea-antes.jpg',
     'Márcia Foletto / O Globo: ginasio-painel-hoje.jpg',
     'EAD/PUCV: conjunto-historico.jpg',
-    '[CONFIRMAR CRÉDITO]: home-bloco-a.jpg, grades-corredor.jpg, escola-historica.jpg, ginasio-historico.jpg',
+    '[CONFIRMAR CRÉDITO]: grades-corredor.jpg, escola-historica.jpg',
     'Imagem de compartilhamento (Open Graph): ilustração gerada com IA (ChatGPT), sob direção do grupo.',
   ],
 }
@@ -322,10 +334,9 @@ export const home = {
   periodo: 'Rio de Janeiro, 1946 a hoje',
   resumo: "No Pedregulho, a vida coletiva projetada dependia de um Estado presente. Quando ele saiu, a comunidade planejada virou dependência e isolamento.",
   imagem: 'img/home-bloco-a.jpg',
-  imagemFallback: 'img/bloco-a.svg',
   imagemAlt: 'Bloco A após o restauro',
   imagemLegenda: 'Bloco A após o restauro',
-  imagemCredito: 'Nabil Bonduki',
+  imagemCredito: HOME_CREDITO,
   botaoMapa: 'Explorar o mapa →',
   botaoTempo: 'Linha do tempo',
   capitulosTitulo: 'Capítulos',

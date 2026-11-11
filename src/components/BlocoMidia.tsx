@@ -36,6 +36,24 @@ export default function BlocoMidia({ m }: { m: Midia }) {
       </Reveal>
     )
   }
+  if (m.tipo === 'par') return (
+    <Reveal className="-mx-4 my-8">
+      <figure>
+        <div className="grid grid-cols-2 gap-1">
+          {m.fotos.map(f => (
+            <div key={f.foto} className="relative">
+              <Foto src={f.foto} sizes="(min-width: 480px) 240px, 50vw" alt={f.alt} className="aspect-[4/5] w-full bg-linha object-cover" />
+              <span className="absolute left-0 top-0 bg-tinta px-2 py-1 font-titulo text-[11px] font-extrabold uppercase tracking-wide text-papel">{f.rotulo}</span>
+            </div>
+          ))}
+        </div>
+        <figcaption className="px-4 pt-2 text-[13px] leading-snug">
+          {m.legenda}
+          {creditoVisivel(m.credito) && <span className="block text-cinza">{textos.credito}: {m.credito}</span>}
+        </figcaption>
+      </figure>
+    </Reveal>
+  )
   if (m.tipo === 'antesHoje') return (
     <Reveal className="my-10">
       <h2 className="mb-1 font-titulo text-2xl">{antesHoje.titulo}</h2>

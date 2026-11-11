@@ -1,9 +1,10 @@
 import { creditoVisivel } from '../../lib/credito'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useDragControls } from 'framer-motion'
 import { capituloDoEdificio, mapaTextos as T, statusInfo, textos, type Edificio } from '../../data/content'
 import { CORES, formas } from './formas'
+import Foto from '../Foto'
 
 const CAMPOS = ['original', 'transformacao', 'hoje'] as const
 const FOTOS = ['fotoOriginal', 'fotoTransformacao', 'fotoHoje'] as const
@@ -17,6 +18,21 @@ function Miniatura({ e }: { e: Edificio }) {
   )
 }
 
+/** Miniatura grande e centralizada: o viewBox é ajustado ao contorno real do desenho. */
+function MiniaturaGrande({ e }: { e: Edificio }) {
+  const g = useRef<SVGGElement>(null)
+  const [vb, setVb] = useState(formas[e.id].vb.join(' '))
+  useLayoutEffect(() => {
+    const b = g.current?.getBBox()
+    if (b && b.width > 0) { const m = Math.max(b.width, b.height) * 0.12; setVb(`${b.x - m} ${b.y - m} ${b.width + 2 * m} ${b.height + 2 * m}`) }
+  }, [e.id])
+  return (
+    <div className="flex aspect-[4/3] w-full items-center justify-center bg-[#F2F2F0]" aria-hidden="true">
+      <svg viewBox={vb} className="h-full w-full p-6" focusable="false"><g ref={g}>{formas[e.id].desenho(CORES[e.tipo])}</g></svg>
+    </div>
+  )
+}
+
 const FOCAVEIS = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'
 
 export default function BottomSheet({ edificio: e, onClose }: { edificio: Edificio; onClose: () => void }) {
@@ -26,7 +42,7 @@ export default function BottomSheet({ edificio: e, onClose }: { edificio: Edific
   const drag = useDragControls()
   const cap = capituloDoEdificio[e.id]
   const st = statusInfo[e.status]
-  const f = e[FOTOS[aba]] ?? { foto: e.foto, credito: e.credito } // foto da aba, ou a foto única
+  const f = e[FOTOS[aba]] // foto real da aba; sem ela, mostra a miniatura SVG do edifício
 
   // foco preso, Esc fecha, foco volta ao hotspot
   useEffect(() => {
@@ -96,12 +112,14 @@ export default function BottomSheet({ edificio: e, onClose }: { edificio: Edific
           </div>
 
           <div id="painel-aba" role="tabpanel" aria-labelledby={`aba-${aba}`} className="pt-4">
-            <figure className="m-0">
-              <img src={import.meta.env.BASE_URL + f.foto} loading="lazy" decoding="async" alt={`${e.nome}: ${T.abas[aba]}`} className="aspect-[4/3] w-full bg-concreto object-cover" />
-              <figcaption className="mt-2 text-xs italic text-cinza">
-                {f.legenda ?? `${e.nome}, ${T.abas[aba].toLowerCase()}`}.{creditoVisivel(f.credito) && <> {textos.credito}: {f.credito}</>}
-              </figcaption>
-            </figure>
+            {f ? (
+              <figure className="m-0">
+                <Foto src={f.foto} sizes="(min-width: 480px) 480px, 100vw" alt={`${e.nome}: ${T.abas[aba]}`} className="aspect-[4/3] w-full bg-[#F2F2F0] object-contain" />
+                <figcaption className="mt-2 text-xs italic text-cinza">
+                  {f.legenda ?? `${e.nome}, ${T.abas[aba].toLowerCase()}`}.{creditoVisivel(f.credito) && <> {textos.credito}: {f.credito}</>}
+                </figcaption>
+              </figure>
+            ) : <MiniaturaGrande e={e} />}
             <p className="mt-4 font-titulo text-lg font-extrabold">{e[CAMPOS[aba]]}</p>
             <p className="mt-2 text-sm leading-relaxed">{e.descricao}</p>
           </div>

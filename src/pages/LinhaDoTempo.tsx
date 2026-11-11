@@ -33,7 +33,6 @@ export default function LinhaDoTempo() {
             <div className="pointer-events-none absolute bottom-0 left-0 z-10 h-16 w-16 bg-vermelho" />
             <img
               src={base + T.imagem}
-              onError={e => { const t = e.currentTarget; if (!t.dataset.fb) { t.dataset.fb = '1'; t.src = base + T.imagemFallback } }}
               alt={T.imagemAlt}
               className="pointer-events-none absolute bottom-3 left-8 right-0 top-6 z-[5] h-[calc(100%-2.25rem)] w-[calc(100%-2rem)] object-cover grayscale"
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 82%)' }}

@@ -40,9 +40,8 @@ export default function Home() {
           <Mov className="pointer-events-none absolute right-[-6%] top-0 z-0 aspect-square w-3/4 rounded-full bg-marinho" ini={{ opacity: 0, scale: 0.96 }} fim={{ opacity: 1, scale: 1 }} atraso={0.15} />
           <Mov className="relative z-10" ini={{ opacity: 0, y: 12 }} fim={{ opacity: 1, y: 0 }}>
             <Foto
-              eager sizes="(min-width: 480px) 480px, 100vw" larguras={[400, 640, 708]}
+              eager sizes="(min-width: 480px) 480px, 100vw" larguras={[640, 960, 1262]}
               src={home.imagem}
-              onError={e => { const t = e.currentTarget; if (!t.dataset.fb) { t.dataset.fb = '1'; t.removeAttribute('srcset'); t.closest('picture')?.querySelector('source')?.remove(); t.src = import.meta.env.BASE_URL + home.imagemFallback } }}
               alt={home.imagemAlt}
               className="pointer-events-none block aspect-[4/3] w-full object-cover object-[0%_50%]"
               style={{ clipPath: 'url(#curva-foto)' }}

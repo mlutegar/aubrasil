@@ -3,8 +3,8 @@ import { useEffect, useRef, type RefObject } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { linhaDoTempo, tempoTextos as T, textos } from '../../data/content'
 import Marcador from './Marcador'
+import Foto from '../Foto'
 
-const base = import.meta.env.BASE_URL
 const FOCAVEIS = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'
 
 interface Props {
@@ -120,10 +120,12 @@ function Card({ indice: i, onFechar, onIr, retorno }: Props & { indice: number }
             {l1}{l2 && <><br />{l2}</>}
           </h2>
           <div className="mt-4 h-[6px] w-12 bg-vermelho" />
-          <figure className="m-0 mt-5">
-            <img src={base + ev.foto} alt={`${ev.titulo}, ${ev.ano}`} draggable={false} className="aspect-[4/3] w-full bg-concreto object-cover" />
-            <figcaption className="mt-2 text-xs italic text-cinza">{ev.legenda ?? ev.resumo}.{creditoVisivel(ev.credito) && <> {textos.credito}: {ev.credito}</>}</figcaption>
-          </figure>
+          {ev.foto && (
+            <figure className="m-0 mt-5">
+              <Foto src={ev.foto} sizes="(min-width: 480px) 480px, 100vw" alt={`${ev.titulo}, ${ev.ano}`} draggable={false} className="aspect-[4/3] w-full bg-concreto object-cover" />
+              <figcaption className="mt-2 text-xs italic text-cinza">{ev.legenda ?? ev.resumo}.{creditoVisivel(ev.credito) && <> {textos.credito}: {ev.credito}</>}</figcaption>
+            </figure>
+          )}
           <p className="mt-5 text-[15px] leading-relaxed">{ev.texto}</p>
         </motion.div>
 

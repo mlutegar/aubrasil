@@ -5,7 +5,7 @@ import { copyFileSync, readdirSync, readFileSync } from 'node:fs'
 
 const IMG = 'public/img/'
 const LARGURAS = [400, 640]
-const EXTRAS = { 'home-bloco-a': [708] } // largura original (708px): servida em telas 2x sem ampliar
+const EXTRAS = { 'home-bloco-a': [960, 1262] } // hero da Home: 640/960/1262 (largura original), sem upscale
 
 // 1) WebP em múltiplos tamanhos (nunca amplia além do original)
 for (const f of readdirSync(IMG).filter(f => /\.jpe?g$/i.test(f))) {
