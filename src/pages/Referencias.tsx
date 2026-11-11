@@ -54,7 +54,7 @@ export default function Referencias() {
               <span className="font-bold">{i.nome}.</span> {creditoVisivel(i.credito) && <><span className="text-cinza">{textos.credito}:</span> {comLinks(i.credito)}</>}
             </li>
           ))}
-          {referencias.creditos.map(c => <li key={c}>{comLinks(c)}</li>)}
+          {referencias.creditos.filter(creditoVisivel).map(c => <li key={c}>{comLinks(c)}</li>)}
         </ul>
       </section>
 
