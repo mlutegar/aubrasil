@@ -20,7 +20,7 @@ export default function Ampliacao({ src, alt, onClose }: { src: string; alt: str
   const dist = () => { const [a, b] = [...pts.current.values()]; return Math.hypot(a.x - b.x, a.y - b.y) }
   const clamp = (s: number) => Math.min(6, Math.max(1, s))
   const down = (e: React.PointerEvent) => {
-    e.currentTarget.setPointerCapture(e.pointerId)
+    try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* ponteiro sintético */ }
     pts.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
     if (pts.current.size === 2) ref.current = { d: dist(), s: t.s }
   }
@@ -37,7 +37,7 @@ export default function Ampliacao({ src, alt, onClose }: { src: string; alt: str
   return createPortal(
     <div role="dialog" aria-modal="true" aria-label={alt} className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose} style={{ backgroundColor: '#EDEBE6' }}>
       <button ref={fechar} type="button" aria-label="Fechar ampliação" onClick={(e) => { e.stopPropagation(); onClose() }}
-        className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center bg-preto text-papel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vermelho" style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}>
+        className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center bg-tinta text-papel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vermelho" style={{ top: 'max(0.75rem, env(safe-area-inset-top))' }}>
         <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
       </button>
       <div className="flex h-full w-full items-center justify-center overflow-hidden" style={{ touchAction: 'none' }}
