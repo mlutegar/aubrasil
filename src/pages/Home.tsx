@@ -2,17 +2,8 @@ import { Link } from 'react-router-dom'
 import { antesHoje, capitulos, home, rodape } from '../data/content'
 import CobogoIntro from '../components/CobogoIntro'
 import Reveal from '../components/Reveal'
-import Foto from '../components/Foto'
+import CapaCartaz from '../components/CapaCartaz'
 import AntesHoje from '../components/AntesHoje'
-import { motion, useReducedMotion, type TargetAndTransition } from 'framer-motion'
-import type { ReactNode } from 'react'
-
-/** Entrada sutil da composição; sem movimento em prefers-reduced-motion. */
-function Mov({ className, children, ini, fim, atraso = 0 }: { className: string; children?: ReactNode; ini: TargetAndTransition; fim: TargetAndTransition; atraso?: number }) {
-  const reduzir = useReducedMotion()
-  if (reduzir) return <div className={className}>{children}</div>
-  return <motion.div className={className} initial={ini} animate={fim} transition={{ duration: 0.6, ease: 'easeOut', delay: atraso }}>{children}</motion.div>
-}
 
 export default function Home() {
   return (
@@ -28,28 +19,7 @@ export default function Home() {
         <div className="mt-4 h-[6px] w-12 bg-vermelho" />
         <p className="mt-4 text-[15px] leading-snug">{home.resumo}</p>
 
-        {/* Composição cartaz: círculo atrás (centro na borda superior da foto), foto com topo em curva S, faixa vermelha na base */}
-        <svg width="0" height="0" className="absolute" aria-hidden focusable="false">
-          <defs>
-            <clipPath id="curva-foto" clipPathUnits="objectBoundingBox">
-              <path d="M0,0.16 C0.3,0.16 0.4,0.02 0.7,0.02 C0.85,0.02 0.94,0.05 1,0.05 L1,1 L0,1 Z" />
-            </clipPath>
-          </defs>
-        </svg>
-        <figure className="relative -mx-gutter mt-6 pt-[37.5%] [overflow-x:clip]">
-          <Mov className="pointer-events-none absolute right-[-6%] top-0 z-0 aspect-square w-3/4 rounded-full bg-marinho" ini={{ opacity: 0, scale: 0.96 }} fim={{ opacity: 1, scale: 1 }} atraso={0.15} />
-          <Mov className="relative z-10" ini={{ opacity: 0, y: 12 }} fim={{ opacity: 1, y: 0 }}>
-            <Foto
-              eager sizes="(min-width: 480px) 480px, 100vw" larguras={[640, 960, 1262]}
-              src={home.imagem}
-              alt={home.imagemAlt}
-              className="pointer-events-none block aspect-[4/3] w-full object-cover object-[0%_50%]"
-              style={{ clipPath: 'url(#curva-foto)' }}
-            />
-            <div className="pointer-events-none absolute bottom-0 left-gutter h-5 w-[72px] translate-y-1/2 bg-vermelho" />
-          </Mov>
-          <figcaption className="relative z-0 mt-4 px-gutter text-right text-xs text-[#595959]">{home.imagemLegenda} · {home.imagemCredito}</figcaption>
-        </figure>
+        <CapaCartaz foto={home.imagem} alt={home.imagemAlt} legenda={home.imagemLegenda} credito={home.imagemCredito} objectPosition="0% 50%" />
 
         <div className="relative z-20 mt-6 flex flex-col gap-3">
           <Link to="/mapa" className="flex h-12 w-full items-center justify-center rounded-full bg-marinho font-titulo text-base font-extrabold text-white">{home.botaoMapa}</Link>

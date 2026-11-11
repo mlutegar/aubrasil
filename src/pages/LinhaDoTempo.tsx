@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { linhaDoTempo, tempoTextos as T } from '../data/content'
 import Marcador from '../components/tempo/Marcador'
 import CardMarco from '../components/tempo/CardMarco'
-
-const base = import.meta.env.BASE_URL
+import CapaCartaz from '../components/CapaCartaz'
 
 export default function LinhaDoTempo() {
   const reduzir = useReducedMotion()
@@ -28,21 +27,16 @@ export default function LinhaDoTempo() {
           <div className="mt-4 h-[6px] w-12 bg-vermelho" />
           <p className="mt-4 text-[15px] leading-snug">{T.frase}</p>
 
-          <div className="relative mt-5 min-h-[220px] flex-1">
-            <div className="pointer-events-none absolute -right-10 -top-2 aspect-square w-[78%] rounded-full bg-marinho" />
-            <div className="pointer-events-none absolute bottom-0 left-0 z-10 h-16 w-16 bg-vermelho" />
-            <img
-              src={base + T.imagem}
-              alt={T.imagemAlt}
-              className="pointer-events-none absolute bottom-3 left-8 right-0 top-6 z-[5] h-[calc(100%-2.25rem)] w-[calc(100%-2rem)] object-cover grayscale"
-              style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 82%)' }}
-            />
-          </div>
+          <CapaCartaz
+            foto={T.imagem} alt={T.imagemAlt} legenda={T.imagemLegenda} credito={T.imagemCredito}
+            proporcao="aspect-[4/5]" objectPosition="85% 20%" circulo="esquerda" curva="espelhada" larguras={[400, 640]}
+            filtro="grayscale(1) sepia(0.15) contrast(1.1)" tom="rgba(237,235,230,0.18)" linha
+          />
 
           <button
             type="button"
             onClick={() => lista.current?.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' })}
-            className="relative z-20 mt-5 flex h-12 w-full items-center justify-center rounded-full bg-marinho font-titulo text-base font-extrabold text-papel"
+            className="relative z-20 mt-6 flex h-12 w-full items-center justify-center rounded-full bg-marinho font-titulo text-base font-extrabold text-papel"
           >{T.botao}</button>
         </section>
 

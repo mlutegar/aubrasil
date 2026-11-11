@@ -81,7 +81,7 @@ export const tempoTextos = {
   botao: 'Explorar linha do tempo →',
   imagem: 'img/timeline-capa.jpg',
   imagemAlt: 'Vista aérea do conjunto, c. anos 1960',
-  imagemLegenda: 'Vista aérea do conjunto, c. anos 1960',
+  imagemLegenda: 'Vista aérea do conjunto',
   imagemCredito: 'Nabil Bonduki',
   listaLabel: 'Marcos da linha do tempo',
   abrir: 'Abrir',
