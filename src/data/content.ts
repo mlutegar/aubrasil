@@ -81,7 +81,7 @@ export const tempoTextos = {
   botao: 'Explorar linha do tempo →',
   imagem: 'img/posto-anos-1950.jpg',
   imagemAlt: 'Posto de saúde com painéis de Anísio Medeiros em primeiro plano e, ao fundo, o Bloco A ainda em construção, anos 1950',
-  imagemLegenda: 'Posto de saúde e o Bloco A em construção, anos 1950',
+  imagemLegenda: 'Posto de saúde e Bloco A em obras, anos 1950',
   imagemCredito: 'Arquivo Geral da Cidade do Rio de Janeiro',
   listaLabel: 'Marcos da linha do tempo',
   abrir: 'Abrir',

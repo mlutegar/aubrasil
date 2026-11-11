@@ -29,7 +29,7 @@ export default function LinhaDoTempo() {
 
           <CapaCartaz
             foto={T.imagem} alt={T.imagemAlt} legenda={T.imagemLegenda} credito={T.imagemCredito}
-            proporcao="aspect-[4/5]" objectPosition="60% 30%" circulo="esquerda" curva="espelhada" larguras={[640, 960, 1458]}
+            proporcao="aspect-[4/3]" objectPosition="20% 85%" recorteTopo={0.4} legendaDupla className="!mt-8" circulo="esquerda" curva="tempo" larguras={[640, 960, 1458]}
             filtro="grayscale(1) sepia(0.15) contrast(1.1)" tom="rgba(237,235,230,0.18)" linha
           />
 
